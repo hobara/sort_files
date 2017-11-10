@@ -4,7 +4,7 @@
 # Output2: sort by the birth date.
 # Output3: sort by the last name by descending.
  
-class CustomerList  
+class DataList  
   
   def initialize(file1, file2, file3)
     @data = File.readlines(file1) + File.readlines(file2) + File.readlines(file3)
@@ -50,7 +50,7 @@ class CustomerList
     @list_arr.select { |el| el[:gender] == "Male" }.each do |entry|
       output1 << entry.values.join(" ").concat("\n")
     end
-    puts output1
+    output1
   end
   
   def sort_by_birth_date
@@ -59,7 +59,7 @@ class CustomerList
     res.each do |entry|
       output2 << entry.values.join(" ").concat("\n")
     end
-    puts output2
+    output2
   end
   
   def sort_by_last_name
@@ -67,16 +67,16 @@ class CustomerList
     @list_arr.reverse.each do |entry|
       output3 << entry.values.join(" ").concat("\n")
     end
-    puts output3
+    output3
   end
   
 end 
 
-sample = CustomerList.new("./pipe_delimited.txt", "./comma_delimited.txt", "./space_delimited.txt")
+sample = DataList.new("./pipe_delimited.txt", "./comma_delimited.txt", "./space_delimited.txt")
 sample.process_data
 puts "\nOutput1: Sorted by Gender -----------"
-sample.sort_by_gender
+puts sample.sort_by_gender
 puts "\nOutput2: Sorted by Birth Date -------"
-sample.sort_by_birth_date
+puts sample.sort_by_birth_date
 puts "\nOutput3: Sorted by Last Name --------"
-sample.sort_by_last_name
+puts sample.sort_by_last_name
